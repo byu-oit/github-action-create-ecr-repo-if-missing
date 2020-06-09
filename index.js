@@ -5,7 +5,7 @@ async function run () {
   try {
     const repositoryName = getInput('DOCKER_REPO_NAME', { required: true })
 
-    const ecr = new AWS.ECR({ apiVersion: '2015-09-21' })
+    const ecr = new AWS.ECR({ apiVersion: '2015-09-21', region: process.env.AWS_REGION })
 
     let repositoryExists = false
     try {
@@ -19,7 +19,7 @@ async function run () {
     }
 
     console.log('Repository does not exist. Creating...')
-    await ecr.createRepository({ repositoryName, imageScanningConfiguration: { scanOnPush: true } })
+    await ecr.createRepository({ repositoryName, imageScanningConfiguration: { scanOnPush: true } }).promise()
 
     const accessPolicyText = JSON.stringify({
       Version: '2008-10-17',
