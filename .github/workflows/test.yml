@@ -9,6 +9,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -19,6 +20,6 @@ jobs:
         id: ecr
         uses: aws-actions/amazon-ecr-login@v1
       - name: Create ECR Repo if Missing
-        uses: byu-oit/github-action-create-ecr-repo-if-missing@v1
+        uses: ./
         with:
           DOCKER_REPO_NAME: test-repo
