@@ -1,0 +1,33 @@
+{
+  "name": "github-action-create-ecr-repo-if-missing",
+  "version": "1.0.0",
+  "description": "Create ECR Repo if Missing",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npx standard index.js",
+    "package": "npx ncc build index.js -m -o dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byu-oit/github-action-create-ecr-repo-if-missing.git"
+  },
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "JavaScript"
+  ],
+  "author": "Gary Crye <gary_crye@byu.edu>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/byu-oit/github-action-create-ecr-repo-if-missing/issues"
+  },
+  "homepage": "https://github.com/byu-oit/github-action-create-ecr-repo-if-missing#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "aws-sdk": "^2.693.0"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.22.1",
+    "standard": "^14.3.4"
+  }
+}

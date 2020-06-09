@@ -1,0 +1,11 @@
+name: 'Create ECR Repo if Missing'
+description: 'A GitHub Action for creating AWS ECR repositories if they don''t already exist'
+inputs:
+  DOCKER_REPO_NAME:
+    # Ex: 'byuapi-classes-v3-app' would allow you to tag and push images to
+    # $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/byuapi-classes-v3-app:some-tag
+    description: 'The ECR repository name'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
