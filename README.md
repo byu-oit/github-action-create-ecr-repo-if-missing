@@ -18,9 +18,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET }}
           aws-region: us-west-2
       - name: Log into Amazon ECR
-        id: ecr
         uses: aws-actions/amazon-ecr-login@v1
-      - name: Create ECR Repo if Missing
+      - name: Create ECR repo if missing
         uses: byu-oit/github-action-create-ecr-repo-if-missing@v1
         with:
           DOCKER_REPO_NAME: ${{ env.REPO }} # Your repo name goes here

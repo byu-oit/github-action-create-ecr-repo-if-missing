@@ -17,9 +17,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.byu_oit_terraform_dev_secret }}
           aws-region: us-west-2
       - name: Log into Amazon ECR
-        id: ecr
         uses: aws-actions/amazon-ecr-login@v1
-      - name: Create ECR Repo if Missing
+      - name: Create ECR repo if missing
         uses: ./
         with:
           DOCKER_REPO_NAME: test-repo
