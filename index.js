@@ -7,8 +7,11 @@ async function run () {
 
     const ecr = new AWS.ECR({ apiVersion: '2015-09-21' })
 
-    const { repositories } = await ecr.describeRepositories({ repositoryNames: [repositoryName] }).promise()
-    const repositoryExists = repositories.some(repo => repo.repositoryName === repositoryName)
+    let repositoryExists = false
+    try {
+      await ecr.describeRepositories({ repositoryNames: [repositoryName] }).promise()
+      repositoryExists = true
+    } catch {}
 
     if (repositoryExists) {
       console.log('Repository already exists 🎉')
@@ -62,7 +65,7 @@ async function run () {
 
     console.log('Done! 🎉')
   } catch (e) {
-    setFailed(`An error occurred: ${e.message || e}`)
+    setFailed(e.message || e)
   }
 }
 
