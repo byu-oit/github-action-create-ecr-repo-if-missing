@@ -1,3 +1,6 @@
+![CI](https://github.com/byu-oit/github-action-create-ecr-repo-if-missing/workflows/CI/badge.svg)
+![Test](https://github.com/byu-oit/github-action-create-ecr-repo-if-missing/workflows/Test/badge.svg)
+
 # ![BYU logo](https://www.hscripts.com/freeimages/logos/university-logos/byu/byu-logo-clipart-128.gif) github-action-create-ecr-repo-if-missing
 A GitHub Action for creating AWS ECR repositories
 
