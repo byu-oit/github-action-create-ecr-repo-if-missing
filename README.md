@@ -29,6 +29,39 @@ jobs:
       # ...
 ```
 
+<details>
+<summary>Or for a more complicated example, if you want to retain a certain number of tagged images...</summary>
+<p>
+
+```yaml
+on: push
+# ...
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # ...
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET }}
+          aws-region: us-west-2
+      - name: Log into Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v1
+      - name: Create ECR repo if missing
+        uses: byu-oit/github-action-create-ecr-repo-if-missing@v1
+        with:
+          DOCKER_REPO_NAME: ${{ env.REPO }} # Your repo name goes here
+          NUM_DAYS_BEFORE_EXPIRING_UNTAGGED_IMAGES: 14
+          TAG_PREFIX: 'dev-v'
+          NUM_TAGGED_IMAGES_TO_RETAIN: 5
+      # ...
+```
+
+</p>
+</details>
+
 ## Contributing
 Hopefully this is useful to others at BYU. Feel free to ask me some questions about it, but I make no promises about being able to commit time to support it.
 
