@@ -75,7 +75,7 @@ async function run () {
           tagStatus: 'tagged',
           tagPrefixList: [tagPrefix],
           countType: 'imageCountMoreThan',
-          countNumber: numImages
+          countNumber: parseInt(numImages, 10)
         },
         action: {
           type: 'expire'
