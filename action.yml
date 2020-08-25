@@ -6,6 +6,19 @@ inputs:
     # $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/byuapi-classes-v3-app:some-tag
     description: 'The ECR repository name'
     required: true
+  NUM_DAYS_BEFORE_EXPIRING_UNTAGGED_IMAGES:
+    description: 'The number of days after which untagged images will expire'
+    required: false
+    default: '30'
+
+  # These next two go together to create the "Expire old images as new ones are built" lifecycle policy
+  TAG_PREFIX:
+    description: 'The image tag prefix used so that we can expire old images as new ones are built'
+    required: false
+  NUM_TAGGED_IMAGES_TO_RETAIN:
+    description: 'The number of images with the given prefix to retain'
+    required: false
+    # Defaults to retaining all tagged images
 runs:
   using: 'node12'
   main: 'dist/index.js'
