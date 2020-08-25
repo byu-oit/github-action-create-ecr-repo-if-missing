@@ -67,19 +67,21 @@ async function run () {
         }
       ]
     }
-    if (tagPrefix && numImages) lifecyclePolicy.rules.push({
-      rulePriority: 20,
-      description: 'Expire old images as new ones are built',
-      selection: {
-        tagStatus: 'tagged',
-        tagPrefixList: [tagPrefix],
-        countType: 'imageCountMoreThan',
-        countNumber: numImages
-      },
-      action: {
-        type: 'expire'
-      }
-    })
+    if (tagPrefix && numImages) {
+      lifecyclePolicy.rules.push({
+        rulePriority: 20,
+        description: 'Expire old images as new ones are built',
+        selection: {
+          tagStatus: 'tagged',
+          tagPrefixList: [tagPrefix],
+          countType: 'imageCountMoreThan',
+          countNumber: numImages
+        },
+        action: {
+          type: 'expire'
+        }
+      })
+    }
     const lifecyclePolicyText = JSON.stringify(lifecyclePolicy)
 
     console.log('Applying repository access and lifecycle policies...')
