@@ -6,7 +6,7 @@ on:
       - master
       - 'v*'
 env:
-  node_version: "12.x"
+  node_version: "16.x"
 
 jobs:
   build: # make sure build/ci work properly
@@ -22,10 +22,7 @@ jobs:
       - name: npm install
         run: npm install
 
-      - name: npm build
-        run: npm build
-
-      - name: npm run pack
+      - name: npm run package
         run: npm run package
 
   audit:
