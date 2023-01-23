@@ -6,7 +6,7 @@ on:
       - master
       - 'v*'
 env:
-  node_version: "16.x"
+  node_version: "18.x"
 
 jobs:
   build: # make sure build/ci work properly
