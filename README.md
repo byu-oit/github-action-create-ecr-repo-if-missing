@@ -23,7 +23,7 @@ jobs:
       - name: Log into Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
       - name: Create ECR repo if missing
-        uses: byu-oit/github-action-create-ecr-repo-if-missing@v1
+        uses: byu-oit/github-action-create-ecr-repo-if-missing@v2
         with:
           DOCKER_REPO_NAME: ${{ env.REPO }} # Your repo name goes here
       # ...
@@ -50,7 +50,7 @@ jobs:
       - name: Log into Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
       - name: Create ECR repo if missing
-        uses: byu-oit/github-action-create-ecr-repo-if-missing@v1
+        uses: byu-oit/github-action-create-ecr-repo-if-missing@v2
         with:
           DOCKER_REPO_NAME: ${{ env.REPO }} # Your repo name goes here
           NUM_DAYS_BEFORE_EXPIRING_UNTAGGED_IMAGES: 14
