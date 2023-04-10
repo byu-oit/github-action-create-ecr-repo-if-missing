@@ -24,7 +24,7 @@
   "homepage": "https://github.com/byu-oit/github-action-create-ecr-repo-if-missing#readme",
   "dependencies": {
     "@actions/core": "^1.9.1",
-    "aws-sdk": "^2.814.0"
+    "aws-sdk": "^2.1354.0"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.22.1",
