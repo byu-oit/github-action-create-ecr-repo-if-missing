@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+env:
+  aws_account: "977306314792"
+  aws_gha_role: create-ecr-repo-if-missing-dev-gha
 
 jobs:
   test:
@@ -13,8 +16,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          aws-access-key-id: ${{ secrets.byu_oit_terraform_dev_key }}
-          aws-secret-access-key: ${{ secrets.byu_oit_terraform_dev_secret }}
+          role-to-assume: "arn:aws:iam::${{ env.aws_account }}:role/${{ env.aws_gha_role }}"
+          role-session-name: ${{ github.sha }}
           aws-region: us-west-2
       - name: Log into Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
@@ -30,8 +33,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          aws-access-key-id: ${{ secrets.byu_oit_terraform_dev_key }}
-          aws-secret-access-key: ${{ secrets.byu_oit_terraform_dev_secret }}
+          role-to-assume: "arn:aws:iam::${{ env.aws_account }}:role/${{ env.aws_gha_role }}"
+          role-session-name: ${{ github.sha }}
           aws-region: us-west-2
       - name: Log into Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
