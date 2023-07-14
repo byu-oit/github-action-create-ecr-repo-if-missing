@@ -11,6 +11,9 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v3
       - name: Configure AWS credentials
@@ -28,6 +31,9 @@ jobs:
   test-fancy-case:
     name: Test the Fancy Case
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v3
       - name: Configure AWS credentials
