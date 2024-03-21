@@ -30,7 +30,7 @@ async function run () {
     }
 
     console.log('Repository does not exist. Creating...')
-    await ecr.createRepository({ repositoryName, imageScanningConfiguration: { scanOnPush: true } }).promise()
+    await ecr.createRepository({ repositoryName }).promise()
 
     const accessPolicyText = JSON.stringify({
       Version: '2008-10-17',
